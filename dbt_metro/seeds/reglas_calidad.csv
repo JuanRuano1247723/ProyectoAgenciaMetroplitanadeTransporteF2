@@ -13,6 +13,7 @@ transurbano_transacciones,fecha_futura,rechazo,La fecha del evento es posterior 
 transurbano_transacciones,monto_invalido,rechazo,monto_centavos no es numérico o es negativo
 transurbano_transacciones,cod_parada_nulo,rechazo,La transacción no trae código de parada
 transurbano_transacciones,duplicado_exacto,rechazo,Fila idéntica en todas las columnas: se conserva la primera
+transurbano_transacciones,transaccion_rechazada,rechazo,cod_estado 7 o 9: transacción rechazada por el operador (no es un abordaje)
 transurbano_transacciones,parada_sin_catalogo,advertencia,cod_parada no existe en el catálogo de paradas
 aerometro_boardings,llave_formato_invalido,rechazo,user_hash no cumple el formato de 12 caracteres hexadecimales
 aerometro_boardings,fecha_invalida,rechazo,timestamp_utc no se puede interpretar como ISO 8601 UTC

@@ -41,14 +41,14 @@ select
              then 'fecha_futura' end,
         case when m.tarifa_gtq is null or m.tarifa_gtq < 0 then 'monto_invalido' end,
         case when m.n_id > 1 then 'duplicado_torniquete' end
-    ], x -> x is not null) as reglas_rechazo,
+    ], lambda x: x is not null) as reglas_rechazo,
     list_filter([
         case when m.id_previo is not null and m.id_previo <> m.validacion_id_txt
                   and date_diff('second', m.ts_previo, m.ts_local) between 0 and {{ var('ventana_doble_lectura_s') }}
              then 'posible_doble_lectura' end,
         case when c.estacion_id_original is null then 'estacion_sin_catalogo' end,
         case when p.tarjeta is null then 'tarjeta_sin_padron' end
-    ], x -> x is not null) as reglas_advertencia
+    ], lambda x: x is not null) as reglas_advertencia
 from marcado m
 left join catalogo c on c.estacion_id_original = m.estacion_id
 left join padron p on p.tarjeta = m.tarjeta

@@ -38,10 +38,11 @@ select
              then 'fecha_futura' end,
         case when m.monto_centavos is null or m.monto_centavos < 0 then 'monto_invalido' end,
         case when m.cod_parada is null then 'cod_parada_nulo' end,
-        case when m.n_dup > 1 then 'duplicado_exacto' end
-    ], x -> x is not null) as reglas_rechazo,
+        case when m.n_dup > 1 then 'duplicado_exacto' end,
+        case when m.cod_estado in ({{ var('estados_transurbano_rechazados', "'7', '9'") }}) then 'transaccion_rechazada' end
+    ], lambda x: x is not null) as reglas_rechazo,
     list_filter([
         case when m.cod_parada is not null and c.estacion_id_original is null then 'parada_sin_catalogo' end
-    ], x -> x is not null) as reglas_advertencia
+    ], lambda x: x is not null) as reglas_advertencia
 from marcado m
 left join catalogo c on c.estacion_id_original = m.cod_parada

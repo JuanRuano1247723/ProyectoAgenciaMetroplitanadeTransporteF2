@@ -35,9 +35,9 @@ select
              then 'fecha_futura' end,
         case when m.tarifa_gtq is null or m.tarifa_gtq < 0 then 'monto_invalido' end,
         case when m.n_id > 1 then 'duplicado_boarding' end
-    ], x -> x is not null) as reglas_rechazo,
+    ], lambda x: x is not null) as reglas_rechazo,
     list_filter([
         case when c.estacion_id_original is null then 'estacion_sin_catalogo' end
-    ], x -> x is not null) as reglas_advertencia
+    ], lambda x: x is not null) as reglas_advertencia
 from marcado m
 left join catalogo c on c.estacion_id_original = m.station_code

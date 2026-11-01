@@ -23,6 +23,6 @@ select
              then 'llave_formato_no_transmetro' end,
         case when op is null then 'operacion_desconocida' end,
         case when seq is null then 'secuencia_invalida' end
-    ], x -> x is not null) as reglas_rechazo,
+    ], lambda x: x is not null) as reglas_rechazo,
     cast([] as varchar[]) as reglas_advertencia
 from tipado

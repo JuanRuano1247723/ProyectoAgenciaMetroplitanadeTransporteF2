@@ -38,14 +38,14 @@ select
         case when m.ts_salida is not null and m.ts_entrada is not null and m.ts_salida < m.ts_entrada
              then 'salida_antes_de_entrada' end,
         case when m.n_id > 1 then 'duplicado_viaje' end
-    ], x -> x is not null) as reglas_rechazo,
+    ], lambda x: x is not null) as reglas_rechazo,
     list_filter([
         case when m.duracion_s is not null and m.ts_entrada is not null and m.ts_salida is not null
                   and abs(m.duracion_s - date_diff('second', m.ts_entrada, m.ts_salida)) > 1
              then 'duracion_no_coincide' end,
         case when e1.estacion_id_original is null or (m.estacion_salida is not null and e2.estacion_id_original is null)
              then 'estacion_sin_catalogo' end
-    ], x -> x is not null) as reglas_advertencia
+    ], lambda x: x is not null) as reglas_advertencia
 from marcado m
 left join catalogo e1 on e1.estacion_id_original = m.estacion_entrada
 left join catalogo e2 on e2.estacion_id_original = m.estacion_salida
