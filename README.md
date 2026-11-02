@@ -21,6 +21,18 @@ Gobernanza: [Diccionario Gold](docs/DICCIONARIO_DATOS_GOLD.md) · [Definiciones 
 
 ---
 
+## Proyecto 2: todo desde cero con un solo comando
+
+Con los 9 archivos del Proyecto 2 en `datos_red/`, `.env` con `PSEUDONIMO_SECRETO` y Docker abierto:
+
+```bash
+python -m flows.correr_todo
+```
+
+Vacía el lake, el warehouse y Kafka, y corre batch, CDC, streaming, conciliación y dbt (Silver, Gold, features). Escribe en `salidas/`: `conteos_p2.md` (archivo, filas esperadas, cargadas y diferencia) y `tiempos_p2.md` (segundos por etapa). Los conteos esperados están en `docs/conteos_esperados_p2.csv`.
+
+---
+
 ## Entorno virtual y notebook de exploración
 
 ```powershell
