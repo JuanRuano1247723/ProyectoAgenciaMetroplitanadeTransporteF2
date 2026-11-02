@@ -1,0 +1,35 @@
+
+=== 1.2 TABLA DE POBLACION (cuenta completa) ===
+corte | fecha_corte | poblacion | positivos | cuenta_tasa_positiva  
+------+-------------+-----------+-----------+-----------------------
+A     | 2026-07-01  | 77062     | 11100     | 11100 / 77062 = 0.144 
+B     | 2026-07-31  | 76096     | 10249     | 10249 / 76096 = 0.1347
+
+=== 1.2 POBLACION POR OPERADOR (la unidad es la tarjeta de cada operador) ===
+corte | operador_cod | poblacion | positivos | tasa  
+------+--------------+-----------+-----------+-------
+A     | AM           | 10429     | 1460      | 0.14  
+A     | MR           | 15746     | 2261      | 0.1436
+A     | TM           | 18918     | 3196      | 0.1689
+A     | TU           | 31969     | 4183      | 0.1308
+B     | AM           | 10284     | 1360      | 0.1322
+B     | MR           | 15687     | 2102      | 0.134 
+B     | TM           | 18786     | 2967      | 0.1579
+B     | TU           | 31339     | 3820      | 0.1219
+
+=== 1.2 COSTO DE LA UNIDAD: positivos cuya persona siguio viajando con OTRA tarjeta ===
+corte | positivos | positivos_que_siguen_con_otra_tarjeta | costo                 
+------+-----------+---------------------------------------+-----------------------
+A     | 11100     | 2404                                  | 2404 de 11100 = 0.2166
+B     | 10249     | 2400                                  | 2400 de 10249 = 0.2342
+
+=== 1.2 COSTO: positivos de Aerometro (su hash opaco no se puede enlazar con otro operador) ===
+corte | positivos_aerometro | positivos | proporcion
+------+---------------------+-----------+-----------
+A     | 1460                | 11100     | 0.1315    
+B     | 1360                | 10249     | 0.1327    
+
+=== Corte C (etiqueta oculta): filas y etiquetas calculables ===
+corte | poblacion | etiquetas_calculadas
+------+-----------+---------------------
+C     | 76127     | 0                   
