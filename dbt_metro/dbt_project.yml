@@ -26,6 +26,11 @@ vars:
   # Fecha de corte de la tabla de features. Vacío = última fecha con datos. Para fijarla:
   #   python -m flows.dbt_runner build   y   --vars '{fecha_corte: "2026-07-15"}'
   fecha_corte: ""
+  # Proyecto 2: cortes (00:00 local), ventana de features hacia atrás y horizonte de la etiqueta hacia adelante
+  cortes_p2: {A: "2026-07-01", B: "2026-07-31", C: "2026-08-30"}
+  ventana_features_dias: 28
+  horizonte_etiqueta_dias: 30
+  min_abordajes_poblacion: 2
   # Zonas del caso MetroRiel (enunciado 2.1); lista SQL
   zonas_caso_metroriel: "12, 8, 1, 6, 17"
 

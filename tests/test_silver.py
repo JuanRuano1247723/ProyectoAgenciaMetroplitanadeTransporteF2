@@ -407,5 +407,5 @@ def test_verificador_de_linaje_con_gold_real_no_encuentra_violaciones(silver, mo
     monkeypatch.setenv("LAKE_DIR", str(silver.lake_dir))
     assert verificar_linaje.main() == 0
     salida = capsys.readouterr().out
-    assert "Modelos Gold encontrados: 13; modelos de features: 1" in salida
+    assert "Modelos Gold encontrados: 13; modelos de features: 2" in salida
     assert "OK" in salida
