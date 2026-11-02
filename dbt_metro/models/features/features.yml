@@ -9,3 +9,12 @@ models:
       - {name: persona_id, tests: [unique, not_null]}
       - {name: fecha_corte, tests: [not_null]}
       - {name: viajes_total, tests: [not_null]}
+
+  - name: poblacion_etiqueta
+    description: >
+      Proyecto 2, 1.2. Una fila por unidad (tarjeta = usuario_sk) y fecha de corte, con la población del corte
+      y la etiqueta de abandono a 30 días. etiqueta es NULL en el corte C (sus 30 días no están en los datos).
+    columns:
+      - {name: unidad_id, tests: [not_null]}
+      - {name: corte, tests: [not_null, {accepted_values: {values: ['A', 'B', 'C']}}]}
+      - {name: etiqueta, tests: [{accepted_values: {values: [0, 1], quote: false}}]}
