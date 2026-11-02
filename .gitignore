@@ -10,3 +10,10 @@ __pycache__/
 *.duckdb
 datos_red/*
 !datos_red/.gitkeep
+
+# Material de entrega y descargas locales
+P2_datos_red/
+P2_datos_red.zip
+Proyecto 2*.pdf
+.DS_Store
+.venv/
