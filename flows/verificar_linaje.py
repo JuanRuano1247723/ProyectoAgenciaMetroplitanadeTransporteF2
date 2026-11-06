@@ -62,7 +62,8 @@ def violaciones_features(manifest: dict) -> list[str]:
                 fuera.append(f"{nodo['name']} lee directamente de Bronze ({dep}).")
             elif dep.startswith("model."):
                 d = nodos[dep]
-                if not (d.get("schema") == "silver" or str(d.get("path", "")).startswith("silver/")):
+                # Silver, u otro modelo de features (que a su vez es revisado por este mismo bucle: también solo lee Silver)
+                if not (d.get("schema") == "silver" or str(d.get("path", "")).startswith("silver/") or es_features(d)):
                     fuera.append(f"{nodo['name']} depende de {d['name']} (capa {d.get('schema')}); "
                                  f"las features solo pueden salir de Silver, no de Gold ni de staging.")
     return fuera
