@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "modelo": "HistGradientBoostingClassifier regularizado (lr 0.05, profundidad 3, 200 iteraciones)",
+  "entrenado_con": "todo el corte A (2026-07-01)",
+  "n_entrenamiento": 77062,
+  "positivos": 11100,
+  "semilla": 42,
+  "umbral": 0.32,
+  "features": [
+    "viajes_28d",
+    "viajes_7d",
+    "viajes_14d",
+    "viajes_14d_previos",
+    "tendencia_14d",
+    "dias_activos_28d",
+    "dias_desde_ultimo_viaje",
+    "gasto_28d",
+    "tarifa_media_28d",
+    "estaciones_distintas_28d",
+    "zonas_distintas_28d",
+    "transbordos_28d",
+    "prop_fin_de_semana_28d",
+    "prop_hora_pico_28d",
+    "persona_operadores_28d"
+  ],
+  "categoricas": [
+    "operador_cod"
+  ],
+  "etiqueta": "1 si la unidad no tiene ningún abordaje válido en los 30 días desde el corte",
+  "fecha_entrenamiento": "2026-11-06T17:52:20",
+  "python": "3.11.0",
+  "sklearn": "1.9.1",
+  "numpy": "2.4.6",
+  "joblib": "1.6.0",
+  "plataforma": "macOS-27.0.1-arm64-arm-64bit"
+}
