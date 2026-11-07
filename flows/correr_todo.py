@@ -65,11 +65,13 @@ def _etapas(cfg: Config, con_kafka: bool, pausa: float):
     yield "silver_gold_dbt", lambda: construir_silver(cfg)
 
 
-def tabla_conteos(cfg: Config) -> list[dict]:
-    esperados = {r["archivo"]: int(r["filas_esperadas"]) for r in csv.DictReader(ESPERADOS.open(encoding="utf-8"))}
+def tabla_conteos(cfg: Config, usar_esperados: bool = True) -> list[dict]:
+    """Con usar_esperados=False (datos que no son los del Proyecto 2 original, p. ej. con más días) lo esperado son las líneas del archivo."""
+    esperados = ({r["archivo"]: int(r["filas_esperadas"]) for r in csv.DictReader(ESPERADOS.open(encoding="utf-8"))}
+                 if usar_esperados else {})
     filas = []
     for r in conciliar(cfg):
-        esp = esperados[r["archivo"]]
+        esp = esperados.get(r["archivo"], r["filas_origen"])
         cargadas = r["filas_bronze"]
         malf = r["filas_malformadas"]
         dif = esp - cargadas
@@ -100,6 +102,8 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--sin-streaming", action="store_true", help="omite Kafka (Transmetro y Aerómetro no se cargan)")
     ap.add_argument("--pausa", type=float, default=0.0, help="pausa entre ráfagas al publicar (0 = lo más rápido)")
+    ap.add_argument("--sin-esperados", action="store_true",
+                    help="no compara contra docs/conteos_esperados_p2.csv (datos distintos a los del Proyecto 2 original)")
     a = ap.parse_args()
     cfg = Config.desde_entorno()
     tiempos = []
@@ -110,7 +114,7 @@ def main() -> int:
         fn()
         tiempos.append({"etapa": nombre, "segundos": round(time.perf_counter() - t0, 1)})
     t0 = time.perf_counter()
-    conteos = tabla_conteos(cfg)
+    conteos = tabla_conteos(cfg, usar_esperados=not a.sin_esperados)
     _escribir(SALIDAS / "conteos_p2.csv", conteos, "Conteos: archivo crudo vs Bronze")
     tiempos.append({"etapa": "tabla_de_conteos", "segundos": round(time.perf_counter() - t0, 1)})
     tiempos.append({"etapa": "TOTAL", "segundos": round(time.perf_counter() - t_total, 1)})
