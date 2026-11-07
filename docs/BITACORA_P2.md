@@ -8,7 +8,7 @@ Registro de las decisiones y evaluaciones que no se pueden repetir. El corte B s
 |---|---|
 | Fecha y hora | 2026-11-06 17:47 (hora local) |
 | Rama y commit base | `fase-2`, `c211dd2` (el código de `modelos/umbral.py` y la evidencia de 2.2 aún no estaban versionados) |
-| Commit que contiene el código y la evidencia | **COMPLETAR con el hash al hacer commit de 2.2** |
+| Commit que contiene el código y la evidencia | `091f1ed` (rama `fase-2`, subido por Ruano; la evidencia quedó movida a `evidencia/` en un commit posterior) |
 | Modelo | HistGradientBoosting regularizado (lr 0.05, profundidad 3, 200 iteraciones), entrenado con todo el corte A. Elegido en 2.1 antes de abrir B |
 | Umbral | 0.32, elegido con las predicciones de validación cruzada del corte A y guardado en `evidencia/p2_2_2_umbral.json` antes de leer B |
 | Comando | `python -m modelos.umbral evaluar-b` (se niega a repetirse si existe `evidencia/p2_2_2_test_b.json`) |

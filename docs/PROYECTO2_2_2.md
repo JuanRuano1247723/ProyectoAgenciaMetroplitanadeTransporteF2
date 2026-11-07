@@ -42,7 +42,7 @@ Se usaron las predicciones de validación cruzada del corte A (cada unidad la pr
 Con el umbral congelado, se entrenó el modelo final con **todo el corte A** y se evaluó en el corte B (76,096 unidades, 10,249 positivos, tasa 0.1347) una sola vez. Detalle en `evidencia/p2_2_2_test_b.json`; el script se niega a repetir la evaluación.
 
 - **Fecha:** 2026-11-06 17:47.
-- **Commit:** la corrida partía del commit base `c211dd2` (rama `fase-2`), con `modelos/umbral.py` todavía sin versionar. El commit que contiene el código y esta evidencia se anota en `docs/BITACORA_P2.md` al subirlo.
+- **Commit:** la corrida partía del commit base `c211dd2` (rama `fase-2`), con `modelos/umbral.py` todavía sin versionar. El código y esta evidencia se subieron en el commit `091f1ed` (ver `docs/BITACORA_P2.md`).
 - **Métrica:** PR-AUC 0.3916 (ROC-AUC 0.8148), junto a sus baselines.
 
 | Modelo (umbral 0.32) | Contactados | TP | FP | FN | TN | Precisión | Recall | Ganancia (Q) |
