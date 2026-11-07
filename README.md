@@ -33,6 +33,28 @@ Vacía el lake, el warehouse y Kafka, y corre batch, CDC, streaming, conciliaci�
 
 ---
 
+### Proyecto 2: predicciones del corte C (`predecir.py`)
+
+```bash
+python predecir.py --datos datos_red --fecha-corte 2026-08-30
+```
+
+Escribe `salidas/predicciones_<fecha>.csv` con `unidad_id, tarjetas, puntaje, contactar`. Carga `modelos_guardados/modelo_abandono_v1.0.0.joblib` y **no reentrena**. Si el warehouse no se construyó con esos mismos archivos (se comprueba con su hash), lo reconstruye desde cero con `flows.correr_todo` (necesita Docker para Kafka). `LAKE_DIR` cambia dónde vive el lake. Las predicciones entregadas están en `predicciones/predicciones_corte_C.csv`.
+
+Correrlo en otra máquina:
+
+```bash
+python3.11 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt                  # versiones fijas
+cp .env.example .env                             # y rellena PSEUDONIMO_SECRETO (no cambia las predicciones)
+# copia los 9 archivos a datos_red/ y abre Docker
+python predecir.py --datos datos_red --fecha-corte 2026-08-30
+```
+
+Ficha del modelo: [`docs/FICHA_MODELO.md`](docs/FICHA_MODELO.md). Prueba de invariancia (simulada): [`evidencia/p2_2_4_prueba_invariancia.md`](evidencia/p2_2_4_prueba_invariancia.md).
+
+---
+
 ## Entorno virtual y notebook de exploración
 
 ```powershell
