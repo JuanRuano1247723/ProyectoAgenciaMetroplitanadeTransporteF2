@@ -1,0 +1,67 @@
+{
+  "n": 76096,
+  "positivos": 10249,
+  "tasa_positiva": 0.1346851345668629,
+  "umbral": 0.32,
+  "pr_auc": 0.39163662902504504,
+  "roc_auc": 0.8148148751560205,
+  "modelo": {
+    "tp": 3896,
+    "fp": 5448,
+    "fn": 6353,
+    "tn": 60399,
+    "contactados": 9344,
+    "precision": 0.4169520547945205,
+    "recall": 0.3801346472826617,
+    "ganancia_gtq": 11720.0
+  },
+  "baseline_nadie": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 10249,
+    "tn": 65847,
+    "contactados": 0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "ganancia_gtq": 0.0
+  },
+  "baseline_todos": {
+    "tp": 10249,
+    "fp": 65847,
+    "fn": 0,
+    "tn": 0,
+    "contactados": 76096,
+    "precision": 0.1346851345668629,
+    "recall": 1.0,
+    "ganancia_gtq": -226745.0
+  },
+  "baseline_2_pr_auc": 0.2643819369941641,
+  "baseline_2_mismo_numero_de_contactos": {
+    "tp": 3038,
+    "fp": 6306,
+    "fn": 7211,
+    "tn": 59541,
+    "contactados": 9344,
+    "precision": 0.3251284246575342,
+    "recall": 0.2964191628451556,
+    "ganancia_gtq": -1150.0
+  },
+  "baseline_1_pr_auc": 0.1346851345668629,
+  "modelo_nombre": "HistGradientBoosting regularizado (lr 0.05, prof. 3, 200 iter.)",
+  "fecha": "2026-11-06T17:47:23",
+  "commit_base": "c211dd2dd0adb08125621b17ca9445b7cf49468d",
+  "rama": "fase-2",
+  "arbol_con_cambios_sin_commit": false,
+  "validacion_cv_a": {
+    "tp": 4476.0,
+    "fp": 5430.0,
+    "fn": 6624.0,
+    "tn": 60532.0,
+    "contactados": 9906.0,
+    "precision": 0.451847365233192,
+    "recall": 0.40324324324324323,
+    "ganancia_gtq": 17610.0
+  },
+  "pr_auc_cv_a": 0.43698074632724027,
+  "n_A": 77062
+}

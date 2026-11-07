@@ -1,0 +1,33 @@
+{
+  "modelo": "HistGradientBoosting regularizado (lr 0.05, prof. 3, 200 iter.)",
+  "umbral": 0.32,
+  "umbral_teorico": 0.3333333333333333,
+  "elegido_con": "predicciones de validación cruzada del corte A (5 folds)",
+  "validacion_cv_en_umbral": {
+    "tp": 4476.0,
+    "fp": 5430.0,
+    "fn": 6624.0,
+    "tn": 60532.0,
+    "contactados": 9906.0,
+    "precision": 0.451847365233192,
+    "recall": 0.40324324324324323,
+    "ganancia_gtq": 17610.0
+  },
+  "validacion_cv_en_umbral_teorico": {
+    "tp": 4126,
+    "fp": 4732,
+    "fn": 6974,
+    "tn": 61230,
+    "contactados": 8858,
+    "precision": 0.465793632874238,
+    "recall": 0.3717117117117117,
+    "ganancia_gtq": 17600.0
+  },
+  "pr_auc_cv": 0.43698074632724027,
+  "n_A": 77062,
+  "positivos_A": 11100,
+  "fecha": "2026-11-06T17:47:05",
+  "commit_base": "c211dd2dd0adb08125621b17ca9445b7cf49468d",
+  "rama": "fase-2",
+  "arbol_con_cambios_sin_commit": false
+}
