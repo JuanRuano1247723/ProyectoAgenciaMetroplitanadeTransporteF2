@@ -4,9 +4,9 @@ Código: `dbt_metro/models/features/features_corte.sql`, `flows/prueba_recorte.p
 
 ## 1.3 Features
 
-- **Tabla de features:** `features.features_corte`, una fila por unidad y corte para A (77,062), B y C, con `unidad_id`, `fecha_corte`, 15 features y `etiqueta` (vacía en C). Una prueba de dbt comprueba una sola fila por (unidad, corte).
-- **Diccionario:** `docs/DICCIONARIO_FEATURES_P2.md`. Una fila por feature con qué mide, ventana (ninguna pasa de 28 días) y tabla de Silver.
-- **Prueba de recorte:** `python -m flows.prueba_recorte` calcula el corte A con datos completos y con datos recortados al 30 de junio. Resultado en `evidencia/p2_1_3_prueba_recorte.md`: 77,062 filas comparadas, **0 diferencias**, ninguna feature falló. Como control, una feature con fuga adrede (total de viajes sin cortar) difiere en 68,205 filas, así que la prueba sí detecta fugas. No hubo features que corregir: ninguna falló en la primera corrida.
+- Tabla de features: `features.features_corte`, una fila por unidad y corte para A (77,062), B y C, con `unidad_id`, `fecha_corte`, 15 features y `etiqueta` (vacía en C). Una prueba de dbt comprueba una sola fila por (unidad, corte).
+- Diccionario: `docs/DICCIONARIO_FEATURES_P2.md`. Una fila por feature con qué mide, ventana (ninguna pasa de 28 días) y tabla de Silver.
+- Prueba de recorte: `python -m flows.prueba_recorte` calcula el corte A con datos completos y con datos recortados al 30 de junio. Resultado en `evidencia/p2_1_3_prueba_recorte.md`: 77,062 filas comparadas, 0 diferencias, ninguna feature falló. Como control, una feature con fuga adrede (total de viajes sin cortar) difiere en 68,205 filas, así que la prueba sí detecta fugas. No hubo features que corregir: ninguna falló en la primera corrida.
 
 ## 1.4 Baselines y regresión logística
 

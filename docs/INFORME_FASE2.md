@@ -1,6 +1,6 @@
 # Informe de la Fase 2 · ¿Quién deja de usar la red?
 
-Proyecto 2, Ciencia de Datos, Universidad Rafael Landívar. **Los datos son simulados.** Repositorio con la etiqueta `fase-2`.
+Proyecto 2, Ciencia de Datos, Universidad Rafael Landívar. Los datos son simulados. Repositorio con la etiqueta `fase-2`.
 
 ## 1. El problema y las decisiones de base
 
@@ -28,7 +28,7 @@ Un comando, `python -m flows.correr_todo`, vacía el lake, carga por lotes y CDC
 
 ## 3. Features y fuga (1.3)
 
-15 features de los 28 días anteriores al corte, más el operador. La prueba de recorte (datos completos contra datos cortados al corte) dio **0 diferencias en 77,062 filas**; una feature con fuga puesta adrede sí falló (68,205 filas), por lo que la prueba detecta fugas. Diccionario en `docs/DICCIONARIO_FEATURES_P2.md`.
+15 features de los 28 días anteriores al corte, más el operador. La prueba de recorte (datos completos contra datos cortados al corte) dio 0 diferencias en 77,062 filas; una feature con fuga puesta adrede sí falló (68,205 filas), por lo que la prueba detecta fugas. Diccionario en `docs/DICCIONARIO_FEATURES_P2.md`.
 
 ## 4. Modelos (1.4 y 2.1)
 
@@ -42,7 +42,7 @@ Todos con los mismos 5 folds estratificados del corte A (semilla 42). El corte B
 | Random Forest flexible | 0.3565 | 0.0048 | +0.611 |
 | Random Forest regularizado | 0.4327 | 0.0080 | +0.017 |
 | HistGradientBoosting flexible | 0.4248 | 0.0052 | +0.253 |
-| **HistGradientBoosting regularizado** | **0.4377** | 0.0072 | +0.009 |
+| HistGradientBoosting regularizado | 0.4377 | 0.0072 | +0.009 |
 
 - Las tres penalizaciones de la logística empatan (diferencia 0.0001, contra una desviación de 0.011): con 15 features y 77 mil filas, regularizar casi no cambia nada.
 - Los ensembles flexibles sobreajustan (varianza alta); los regularizados quedan equilibrados.
@@ -53,18 +53,18 @@ Detalle: `docs/PROYECTO2_1_3_1_4.md`, `docs/PROYECTO2_2_1_2_3.md`.
 
 ## 5. Umbral y test único (2.2)
 
-Escenario simulado: contactar Q5, retención 25%, usuario retenido Q60. Ganancia **G = 10·TP − 5·FP**; umbral teórico 5/15 = 0.333. Con las predicciones de validación cruzada de A se barrió el umbral y se eligió **0.32** (Q17,610 en A; la curva es plana entre 0.30 y 0.35). Quedó guardado en `evidencia/p2_2_2_umbral.json` antes de leer B.
+Escenario simulado: contactar Q5, retención 25%, usuario retenido Q60. Ganancia G = 10·TP − 5·FP; umbral teórico 5/15 = 0.333. Con las predicciones de validación cruzada de A se barrió el umbral y se eligió 0.32 (Q17,610 en A; la curva es plana entre 0.30 y 0.35). Quedó guardado en `evidencia/p2_2_2_umbral.json` antes de leer B.
 
 Test B, una sola vez (2026-11-06 17:47, código y evidencia en el commit `091f1ed`):
 
 | Modelo (umbral 0.32) | Contactados | TP | FP | Precisión | Recall | Ganancia |
 |---|---:|---:|---:|---:|---:|---:|
-| HGB regularizado | 9,344 | 3,896 | 5,448 | 0.417 | 0.380 | **Q11,720** |
+| HGB regularizado | 9,344 | 3,896 | 5,448 | 0.417 | 0.380 | Q11,720 |
 | Baseline 1 | 0 | 0 | 0 | 0 | 0 | Q0 |
 | Baseline 2 (mismos contactos, menos viajes) | 9,344 | 3,038 | 6,306 | 0.325 | 0.296 | −Q1,150 |
 | Contactar a todos | 76,096 | 10,249 | 65,847 | 0.135 | 1.000 | −Q226,745 |
 
-PR-AUC en B: modelo 0.3916, baselines 0.1347 y 0.2644. **B salió peor que la validación** (PR-AUC 0.4377 → 0.3916; ganancia Q17,610 → Q11,720). Se pierden verdaderos positivos (4,476 → 3,896) y los falsos casi no cambian; B tiene menos positivos (0.1347 contra 0.1440); y hay algo de optimismo por haber elegido configuración y umbral con la misma validación. No se ajustó nada después de ver B (`docs/BITACORA_P2.md`). Detalle: `docs/PROYECTO2_2_2.md`.
+PR-AUC en B: modelo 0.3916, baselines 0.1347 y 0.2644. B salió peor que la validación (PR-AUC 0.4377 → 0.3916; ganancia Q17,610 → Q11,720). Se pierden verdaderos positivos (4,476 → 3,896) y los falsos casi no cambian; B tiene menos positivos (0.1347 contra 0.1440); y hay algo de optimismo por haber elegido configuración y umbral con la misma validación. No se ajustó nada después de ver B (`docs/BITACORA_P2.md`). Detalle: `docs/PROYECTO2_2_2.md`.
 
 ## 6. Segmentación (2.3)
 

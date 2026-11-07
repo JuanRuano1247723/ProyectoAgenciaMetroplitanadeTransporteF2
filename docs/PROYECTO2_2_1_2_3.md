@@ -18,7 +18,7 @@ Los modelos se comparan con los mismos 5 folds estratificados del corte A que en
 | Random Forest flexible (árboles sin límite de profundidad) | 0.9675 | 0.3565 | 0.0048 | +0.6110 | 0.9944 | 0.7677 | 5.9 |
 | Random Forest regularizado (hojas de al menos 100 filas) | 0.4499 | 0.4327 | 0.0080 | +0.0173 | 0.8318 | 0.8182 | 4.5 |
 | HistGradientBoosting flexible (lr 0.1, 63 hojas, 300 iter.) | 0.6775 | 0.4248 | 0.0052 | +0.2526 | 0.9228 | 0.8098 | 40.0 |
-| **HistGradientBoosting regularizado (lr 0.05, prof. 3, 200 iter.)** | 0.4469 | **0.4377** | 0.0072 | +0.0092 | 0.8250 | 0.8199 | 3.4 |
+| HistGradientBoosting regularizado (lr 0.05, prof. 3, 200 iter.) | 0.4469 | 0.4377 | 0.0072 | +0.0092 | 0.8250 | 0.8199 | 3.4 |
 
 La brecha es PR-AUC de entrenamiento menos PR-AUC de validación. Los baselines no se entrenan, así que su brecha es 0. Los segundos son el tiempo total de entrenar los 5 folds.
 
@@ -54,7 +54,7 @@ Modelo: HistGradientBoosting regularizado. Caída de PR-AUC al permutar cada fea
 
 ### Decisión
 
-Va a producción el **HistGradientBoosting regularizado**. Mejora a la logística en 0.022 de PR-AUC (0.4377 contra 0.4158) y en 0.014 de ROC-AUC (0.8199 contra 0.8059). La mejora es modesta, pero es mayor que la desviación estándar entre folds (0.007 a 0.011) y se repite en las dos métricas y en los dos ensembles regularizados. Su costo de complejidad es bajo: entrena en 3.4 s los 5 folds contra 0.9 s de la logística, y su falta de interpretabilidad se compensa con la importancia por permutación. Los modelos flexibles se descartan por sobreajuste. Limitación: las cuatro configuraciones de ensemble se eligieron a mano, no con una búsqueda; elegir el mejor entre ellas con la validación da una cifra algo optimista, que el test único del corte B (2.2) confirmará o corregirá.
+Va a producción el HistGradientBoosting regularizado. Mejora a la logística en 0.022 de PR-AUC (0.4377 contra 0.4158) y en 0.014 de ROC-AUC (0.8199 contra 0.8059). La mejora es modesta, pero es mayor que la desviación estándar entre folds (0.007 a 0.011) y se repite en las dos métricas y en los dos ensembles regularizados. Su costo de complejidad es bajo: entrena en 3.4 s los 5 folds contra 0.9 s de la logística, y su falta de interpretabilidad se compensa con la importancia por permutación. Los modelos flexibles se descartan por sobreajuste. Limitación: las cuatro configuraciones de ensemble se eligieron a mano, no con una búsqueda; elegir el mejor entre ellas con la validación da una cifra algo optimista, que el test único del corte B (2.2) confirmará o corregirá.
 
 ## 2.3 Segmentación con KMeans y PCA
 
@@ -67,22 +67,22 @@ Gráficas en `evidencia/p2_2_3_k.png`:
 | k | inercia | silueta |
 |---:|---:|---:|
 | 2 | 854,460 | 0.483 |
-| **3** | **744,636** | **0.270** |
+| 3 | 744,636 | 0.270 |
 | 4 | 684,260 | 0.158 |
 | 5 | 635,310 | 0.159 |
 | 6 | 596,385 | 0.153 |
 | 7 | 560,811 | 0.155 |
 | 8 | 535,231 | 0.156 |
 
-Se eligió **k = 3**. La silueta cae de 0.270 con k = 3 a 0.158 con k = 4 y después queda plana, y la curva del codo pierde pendiente a partir de k = 3. Se descartó k = 2 aunque tenga la silueta más alta: solo separa a los viajeros intensos (11%) del resto y no permite acciones distintas. La silueta se calculó con una muestra fija de 10,000 filas por costo.
+Se eligió k = 3. La silueta cae de 0.270 con k = 3 a 0.158 con k = 4 y después queda plana, y la curva del codo pierde pendiente a partir de k = 3. Se descartó k = 2 aunque tenga la silueta más alta: solo separa a los viajeros intensos (11%) del resto y no permite acciones distintas. La silueta se calculó con una muestra fija de 10,000 filas por costo.
 
 ### Gráfico PCA
 
-`evidencia/p2_2_3_pca.png`: los segmentos en los dos primeros componentes (muestra de 12,000 puntos). La varianza explicada es **44.4% + 10.4% = 54.7%**. El componente 1 es casi un eje de nivel de actividad: los segmentos se ordenan de izquierda a derecha de menos a más actividad. Cuidado al leerlo: con solo el 54.7% de la varianza en dos ejes, la separación visual es aproximada.
+`evidencia/p2_2_3_pca.png`: los segmentos en los dos primeros componentes (muestra de 12,000 puntos). La varianza explicada es 44.4% + 10.4% = 54.7%. El componente 1 es casi un eje de nivel de actividad: los segmentos se ordenan de izquierda a derecha de menos a más actividad. Cuidado al leerlo: con solo el 54.7% de la varianza en dos ejes, la separación visual es aproximada.
 
 ### Tabla de segmentos
 
-Tasa de abandono global del corte A: 0.1440. La tasa por segmento es descriptiva: **no prueba que el segmento cause el abandono**.
+Tasa de abandono global del corte A: 0.1440. La tasa por segmento es descriptiva: no prueba que el segmento cause el abandono.
 
 | Segmento | Nombre | Tamaño | % | Tasa de abandono | Mediana de viajes en 28 días | Mediana de días activos | Mediana de días desde el último viaje | Mediana de gasto (Q) | Mediana de operadores (persona) |
 |---:|---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -94,8 +94,8 @@ Cada segmento tiene nombre: los *ocasionales en riesgo* viajan unas 5 veces al m
 
 ### Acciones de retención
 
-1. **Ocasionales en riesgo:** son los únicos candidatos a la campaña. Un mensaje con recarga de cortesía, priorizado por la probabilidad del modelo (2.2), porque el presupuesto no alcanza para los 57,857.
-2. **Regulares:** no se les da incentivo, porque abandonan en el 3% y regalarles recarga cuesta más de lo que retiene. Un recordatorio sin costo solo a quienes bajan su ritmo (`tendencia_14d` negativa) para detectar el enfriamiento a tiempo.
-3. **Intensivos:** ninguna acción de retención (abandonan en el 1.9%). Se pueden usar para otras iniciativas, como programas de fidelidad o de referidos.
+1. Ocasionales en riesgo: son los únicos candidatos a la campaña. Un mensaje con recarga de cortesía, priorizado por la probabilidad del modelo (2.2), porque el presupuesto no alcanza para los 57,857.
+2. Regulares: no se les da incentivo, porque abandonan en el 3% y regalarles recarga cuesta más de lo que retiene. Un recordatorio sin costo solo a quienes bajan su ritmo (`tendencia_14d` negativa) para detectar el enfriamiento a tiempo.
+3. Intensivos: ninguna acción de retención (abandonan en el 1.9%). Se pueden usar para otras iniciativas, como programas de fidelidad o de referidos.
 
 Límite: el 75% de la población cae en un solo segmento, así que la segmentación por sí sola no basta para decidir a quién contactar; esa decisión viene del modelo y del umbral de costo en 2.2.

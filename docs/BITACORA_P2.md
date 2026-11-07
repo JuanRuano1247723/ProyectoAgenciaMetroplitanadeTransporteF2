@@ -1,6 +1,6 @@
 # Bitácora del Proyecto 2
 
-Registro de las decisiones y evaluaciones que no se pueden repetir. El corte B solo se evalúa **una vez**.
+Registro de las decisiones y evaluaciones que no se pueden repetir. El corte B solo se evalúa una vez.
 
 ## Test único en el corte B (2.2)
 
