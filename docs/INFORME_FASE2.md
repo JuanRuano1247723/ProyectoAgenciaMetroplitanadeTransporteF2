@@ -104,4 +104,5 @@ El 95% de los positivos está en el primer segmento: la segmentación sola no de
 
 ## 9. Limitaciones
 
-Datos simulados. La tarjeta como unidad cuenta como abandono a quien cambia de tarjeta. Solo 28 días de historia y sin variables demográficas. No se verificó la calibración de las probabilidades, de la que depende que el umbral 0.32 sea el mejor. La ganancia depende de un escenario de costos simulado. La mejora del ensemble sobre la logística es modesta.
+Datos simulados. La tarjeta como unidad cuenta como abandono a quien cambia de tarjeta. Solo 28 días de historia y sin variables demográficas. 
+
