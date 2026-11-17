@@ -1,0 +1,59 @@
+{
+  "fecha_registro": "2026-11-17",
+  "responsable": "José García",
+  "usuario_git": "Yipieight",
+  "commit_anterior": "ee29390f02e5bac158c3d1d25b02503f72fbca16",
+  "nota": "Huellas de los artefactos que conserva la revisión documental de entrega-final-v2.",
+  "artefactos": [
+    {
+      "ruta": "predecir.py",
+      "git_blob": "0fea2df263ca9f6ec56ecb03ca9b2e1bc0176e9e",
+      "sha256": "25eabbdb97ba39a8e466278620a5fd704678e3c948de5a206e9ff5c59ec8345b",
+      "bytes": 7267
+    },
+    {
+      "ruta": "modelos_guardados/modelo_abandono_v1.0.0.joblib",
+      "git_blob": "af73d92d49c582f26848151665d86eb4789cf7d8",
+      "sha256": "d46b19a8dcdc14792440ae3e3a2bbc9fc212113df201b3df6a775d96ae6b46a4",
+      "bytes": 55563
+    },
+    {
+      "ruta": "modelos_guardados/modelo_abandono_v1.0.0.json",
+      "git_blob": "e37b5b10b7b8bcfc093479e33a2811f8dc17a8e8",
+      "sha256": "b91fd9d42985f24e22f237b29f0c511535cdb60f7e8b65e887b5b07e640a2f1c",
+      "bytes": 966
+    },
+    {
+      "ruta": "predicciones/predicciones_corte_C.csv",
+      "git_blob": "3bfdcee59be5b13c8faf958f46731bca1635898a",
+      "sha256": "43c73f333c2a557b8306278e514d82ab2fc1776f5b796cbdaea10148f148561d",
+      "bytes": 3394030
+    },
+    {
+      "ruta": "requirements.txt",
+      "git_blob": "4ee49e8d04d9189b9ab360ecb0af03952d3fe8fa",
+      "sha256": "e23cd38f6f670028caefd44824cba689ec37418751861941e3b23939b8f5fc78",
+      "bytes": 324
+    }
+  ],
+  "comprobaciones": [
+    {
+      "comparacion": "C, entrega / 90 días / 120 días",
+      "sha256": "43c73f333c2a557b8306278e514d82ab2fc1776f5b796cbdaea10148f148561d",
+      "filas": 76127,
+      "contactos": 9768,
+      "alcance": "Copia y registros de la ejecución conservados durante la preparación de la defensa."
+    },
+    {
+      "comparacion": "B, 60 días / 90 días",
+      "sha256": "674a04a04beeed5d478839be6bbfa02579426d58c9fbfc5c31424840dd84426d",
+      "filas": 76096,
+      "contactos": 9344,
+      "alcance": "Copia y registros de la ejecución conservados durante la preparación de la defensa.",
+      "archivos_conservados": [
+        "predicciones_60_corte_B.csv",
+        "predicciones_90_corte_B.csv"
+      ]
+    }
+  ]
+}

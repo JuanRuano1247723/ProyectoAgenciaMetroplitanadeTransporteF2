@@ -23,6 +23,14 @@ Gobernanza: [Diccionario Gold](docs/DICCIONARIO_DATOS_GOLD.md) · [Definiciones 
 
 ## Proyecto 2: todo desde cero con un solo comando
 
+### Defensa en video y entrega congelada
+
+La revisión documental del 17 de noviembre se identifica con los tags `entrega-final` y `entrega-final-v2`, sobre el mismo commit. Incluye la [bitácora completa de decisiones, responsables y cifras](docs/BITACORA_P2.md), el CSV C, `predecir.py`, el modelo serializado y la ficha. La versión anterior queda en `entrega-final-anterior-ee29390`.
+
+La identidad de las cuentas usadas en el historial es José García (`Yipieight`), Daniel Xiquin (`danielxiquin`) y Daniel Ruano (`JuanRuano1247723`). La bitácora enlaza los commits originales y define la correspondencia de las explicaciones cruzadas del video.
+
+La [evidencia de preparación](evidencia/defensa_2026_11_17/README.md) registra la procedencia de los 90 días, las comprobaciones de invariancia y las huellas de los artefactos. El enlace público del video se incorporará al completar el montaje con las cámaras y voces de los tres integrantes.
+
 Con los 9 archivos del Proyecto 2 en `datos_red/`, `.env` con `PSEUDONIMO_SECRETO` y Docker abierto:
 
 ```bash

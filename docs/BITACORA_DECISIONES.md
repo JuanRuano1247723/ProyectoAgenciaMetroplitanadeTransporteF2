@@ -1,5 +1,7 @@
 # Bitácora de decisiones
 
+Los responsables, las cifras y los commits de las decisiones del Proyecto 2 para la defensa están en [BITACORA_P2.md](BITACORA_P2.md). Ese registro cubre la unidad tarjeta, la etiqueta, la auditoría de fuga, la métrica, los modelos, el umbral, el test B, los segmentos y la inferencia del corte C. Las decisiones de features por persona descritas en la sección histórica de Fase 2 de este documento corresponden al tablero previo; la población de abandono de P2 se define por tarjeta y corte en la bitácora específica.
+
 Registro de las decisiones de diseño, con lo que se descartó y por qué. Estado: **Aceptada** (implementada y probada), **Propuesta** (falta confirmar) o **Abierta**.
 El detalle de cada una está en `DISENO_BRONZE.md`, `DISENO_SILVER.md`, `DISENO_GOLD_GRANO.md` y `SEGURIDAD_DATOS_PERSONALES.md`.
 
