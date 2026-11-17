@@ -29,7 +29,11 @@ La revisión documental del 17 de noviembre se identifica con los tags `entrega-
 
 La identidad de las cuentas usadas en el historial es José García (`Yipieight`), Daniel Xiquin (`danielxiquin`) y Daniel Ruano (`JuanRuano1247723`). La bitácora enlaza los commits originales y define la correspondencia de las explicaciones cruzadas del video.
 
-La [evidencia de preparación](evidencia/defensa_2026_11_17/README.md) registra la procedencia de los 90 días, las comprobaciones de invariancia y las huellas de los artefactos. El enlace público del video se incorporará al completar el montaje con las cámaras y voces de los tres integrantes.
+La [evidencia de preparación](evidencia/defensa_2026_11_17/README.md) registra la procedencia de los 90 días, las comprobaciones de invariancia y las huellas de los artefactos.
+
+**Video de la defensa:** [SEGUNDO PROYECTO DEFENSA FINAL](https://www.youtube.com/watch?v=LvgCD14YIkE). Duración aproximada: **16 minutos y 31 segundos**, con las cámaras y voces reales de los tres integrantes. Está disponible como video no listado de YouTube.
+
+La versión evaluable continúa congelada en [`entrega-final`](https://github.com/JuanRuano1247723/ProyectoAgenciaMetroplitanadeTransporteF2/tree/entrega-final), commit `f6aaba3c737ec2e3b7fe19c6cac955705e85c619`, que coincide con la demostración del video. La incorporación posterior de este enlace al README no modifica el tag ni los artefactos congelados.
 
 Con los 9 archivos del Proyecto 2 en `datos_red/`, `.env` con `PSEUDONIMO_SECRETO` y Docker abierto:
 
