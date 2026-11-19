@@ -65,7 +65,7 @@ python predecir.py --datos datos_red --fecha-corte 2026-08-30
 
 Consulta la [ficha del modelo](docs/FICHA_MODELO.md), la [invariancia original](evidencia/p2_2_4_prueba_invariancia.md) y la [comprobación con 90 y 120 días](evidencia/defensa_2026_11_17/README.md#comprobaciones-de-predicciones).
 
-El [diagnóstico de calibración del corte A](evidencia/CALIBRACION_OOF_A.md) incluye la curva y el ECE estimado con el barrido OOF archivado. La [bitácora del test B](docs/BITACORA_P2.md#test-único-en-el-corte-b-22) registra el orden real de la corrida y el control de commit previo para futuras evaluaciones.
+El [diagnóstico de calibración del corte A](evidencia/CALIBRACION_OOF_A.md) incluye la curva y el ECE de 0.195 puntos porcentuales, calculado directamente con el OOF reconstruido. La [bitácora del test B](docs/BITACORA_P2.md#test-único-en-el-corte-b-22) registra el orden real de la corrida y el control de commit previo para futuras evaluaciones.
 
 ---
 

@@ -5,6 +5,8 @@ El corte B no se carga en ningún modelo de la Fase 1: solo se usa en 2.2, una s
 """
 from __future__ import annotations
 
+from contextlib import closing
+
 import duckdb
 import numpy as np
 import pandas as pd
@@ -21,12 +23,22 @@ FEATURES_NUM = ["viajes_28d", "viajes_7d", "viajes_14d", "viajes_14d_previos", "
 OPERADORES = ["AM", "MR", "TM", "TU"]
 
 
-def cargar_corte(corte: str = "A", cfg: Config | None = None) -> tuple[pd.DataFrame, np.ndarray]:
-    """X (features numéricas y un indicador por operador) e y (etiqueta 0/1) de un corte. Solo A en la Fase 1."""
+def cargar_corte(
+    corte: str = "A", cfg: Config | None = None, *, orden_estable: bool = False
+) -> tuple[pd.DataFrame, np.ndarray]:
+    """Lee X e y. El orden estable permite reproducir los folds sin el secreto original."""
     cfg = cfg or Config.desde_entorno()
-    con = duckdb.connect(str(cfg.lake_dir / "warehouse.duckdb"), read_only=True)
-    df = con.execute("select * from features.features_corte where corte = ? order by unidad_id", [corte]).df()
-    con.close()
+    sql = "select * from features.features_corte where corte = ? order by unidad_id"
+    if orden_estable:
+        sql = """
+            select f.*
+            from features.features_corte f
+            join silver.silver_usuario u on u.usuario_sk = f.unidad_id
+            where f.corte = ?
+            order by u.operador, u.llave_original
+        """
+    with closing(duckdb.connect(str(cfg.lake_dir / "warehouse.duckdb"), read_only=True)) as con:
+        df = con.execute(sql, [corte]).df()
     if df["etiqueta"].isna().any():
         raise ValueError(f"El corte {corte} no tiene etiqueta completa: no se puede entrenar ni evaluar con él.")
     for op in OPERADORES:

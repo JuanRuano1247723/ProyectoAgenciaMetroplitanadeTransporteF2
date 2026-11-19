@@ -55,7 +55,7 @@ Detalle: `docs/PROYECTO2_1_3_1_4.md`, `docs/PROYECTO2_2_1_2_3.md`.
 
 Escenario simulado: contactar Q5, retención 25%, usuario retenido Q60. Ganancia G = 10·TP − 5·FP; umbral teórico 5/15 = 0.333. Con las predicciones de validación cruzada de A se barrió el umbral y se eligió 0.32 (Q17,610 en A; la curva es plana entre 0.30 y 0.35). Quedó guardado en `evidencia/p2_2_2_umbral.json` antes de leer B.
 
-La [curva de calibración del OOF de A](../evidencia/CALIBRACION_OOF_A.md) estima un ECE de 0.25 puntos porcentuales y acota su valor entre 0.052 y 0.681 puntos porcentuales. El rango proviene de los puntajes que son compatibles con el barrido archivado.
+La [curva de calibración del OOF de A](../evidencia/CALIBRACION_OOF_A.md) da un ECE de 0.195 puntos porcentuales, calculado directamente sobre el corte A reconstruido a partir del ZIP de la defensa. Las cinco particiones se reproducen ordenando las tarjetas por operador y llave. El barrido histórico de 2.2 conserva sus propias cifras.
 
 B se evaluó una sola vez el 6 de noviembre a las 17:47, con base en `c211dd2`. El código de la corrida y su evidencia se versionaron después, en `091f1ed`. Para próximas evaluaciones, el comando exige un commit limpio antes de leer B.
 
