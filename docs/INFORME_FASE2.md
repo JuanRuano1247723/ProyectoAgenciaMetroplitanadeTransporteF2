@@ -55,7 +55,9 @@ Detalle: `docs/PROYECTO2_1_3_1_4.md`, `docs/PROYECTO2_2_1_2_3.md`.
 
 Escenario simulado: contactar Q5, retención 25%, usuario retenido Q60. Ganancia G = 10·TP − 5·FP; umbral teórico 5/15 = 0.333. Con las predicciones de validación cruzada de A se barrió el umbral y se eligió 0.32 (Q17,610 en A; la curva es plana entre 0.30 y 0.35). Quedó guardado en `evidencia/p2_2_2_umbral.json` antes de leer B.
 
-Test B, una sola vez (2026-11-06 17:47, código y evidencia en el commit `091f1ed`):
+La [curva de calibración del OOF de A](../evidencia/CALIBRACION_OOF_A.md) estima un ECE de 0.25 puntos porcentuales y acota su valor entre 0.052 y 0.681 puntos porcentuales. El rango proviene de los puntajes que son compatibles con el barrido archivado.
+
+B se evaluó una sola vez el 6 de noviembre a las 17:47, con base en `c211dd2`. El código de la corrida y su evidencia se versionaron después, en `091f1ed`. Para próximas evaluaciones, el comando exige un commit limpio antes de leer B.
 
 | Modelo (umbral 0.32) | Contactados | TP | FP | Precisión | Recall | Ganancia |
 |---|---:|---:|---:|---:|---:|---:|
@@ -91,7 +93,7 @@ El 95% de los positivos está en el primer segmento: la segmentación sola no de
 |---|---|
 | Recorte de features (1.3) | 0 diferencias en 77,062 filas |
 | Invariancia simulada (datos recortados al 31-jul contra completos) | Predicciones idénticas (`evidencia/p2_2_4_prueba_invariancia.md`) |
-| Invariancia real con 30 días más | Se hace en la calificación |
+| Invariancia con 30 días adicionales | C (90 y 120 días) coincide byte a byte con el CSV entregado. [Evidencia y SHA-256](../evidencia/defensa_2026_11_17/README.md#comprobaciones-de-predicciones) |
 | Test B | Usado una vez, modelo y umbral congelados |
 | Pruebas automáticas | 87 de 87 pasan |
 

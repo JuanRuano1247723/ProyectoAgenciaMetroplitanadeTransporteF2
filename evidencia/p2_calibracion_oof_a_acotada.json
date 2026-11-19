@@ -1,0 +1,117 @@
+{
+  "corte": "A",
+  "modelo": "HistGradientBoosting regularizado (lr 0.05, prof. 3, 200 iter.)",
+  "folds": 5,
+  "semilla": 42,
+  "n": 77062,
+  "positivos": 11100,
+  "n_intervalos": 10,
+  "metodo": "intervalos de igual ancho; [desde, hasta), último incluye 1",
+  "fuente": "evidencia/p2_2_2_curva_ganancia.csv",
+  "ece_aproximado": true,
+  "ece": 0.0025033739067244513,
+  "ece_min": 0.0005225013625392492,
+  "ece_max": 0.006800368534426819,
+  "intervalos": [
+    {
+      "desde": 0.0,
+      "hasta": 0.1,
+      "n": 40329,
+      "positivos": 1393,
+      "tasa_observada": 0.034540901088546704,
+      "probabilidad_media": 0.036798891616454665,
+      "media_min": 0.030865134270624123,
+      "media_max": 0.0427326489622852
+    },
+    {
+      "desde": 0.1,
+      "hasta": 0.2,
+      "n": 15062,
+      "positivos": 2194,
+      "tasa_observada": 0.14566458637631124,
+      "probabilidad_media": 0.1446218961625282,
+      "media_min": 0.1421218961625282,
+      "media_max": 0.14712189616252822
+    },
+    {
+      "desde": 0.2,
+      "hasta": 0.3,
+      "n": 10029,
+      "positivos": 2480,
+      "tasa_observada": 0.24728287964901785,
+      "probabilidad_media": 0.248955778243095,
+      "media_min": 0.24645577824309503,
+      "media_max": 0.251455778243095
+    },
+    {
+      "desde": 0.3,
+      "hasta": 0.4,
+      "n": 6053,
+      "positivos": 2083,
+      "tasa_observada": 0.344126879233438,
+      "probabilidad_media": 0.34116264662151,
+      "media_min": 0.33866264662151,
+      "media_max": 0.34366264662151
+    },
+    {
+      "desde": 0.4,
+      "hasta": 0.5,
+      "n": 3042,
+      "positivos": 1369,
+      "tasa_observada": 0.45003287310979617,
+      "probabilidad_media": 0.44704142011834325,
+      "media_min": 0.44454142011834324,
+      "media_max": 0.44954142011834325
+    },
+    {
+      "desde": 0.5,
+      "hasta": 0.6,
+      "n": 1272,
+      "positivos": 708,
+      "tasa_observada": 0.5566037735849056,
+      "probabilidad_media": 0.5436595911949686,
+      "media_min": 0.5411595911949686,
+      "media_max": 0.5461595911949686
+    },
+    {
+      "desde": 0.6,
+      "hasta": 0.7,
+      "n": 1041,
+      "positivos": 686,
+      "tasa_observada": 0.6589817483189241,
+      "probabilidad_media": 0.6477257444764649,
+      "media_min": 0.6452257444764649,
+      "media_max": 0.650225744476465
+    },
+    {
+      "desde": 0.7,
+      "hasta": 0.8,
+      "n": 233,
+      "positivos": 186,
+      "tasa_observada": 0.7982832618025751,
+      "probabilidad_media": 0.7384227467811157,
+      "media_min": 0.7359227467811158,
+      "media_max": 0.7409227467811158
+    },
+    {
+      "desde": 0.8,
+      "hasta": 0.9,
+      "n": 1,
+      "positivos": 1,
+      "tasa_observada": 1.0,
+      "probabilidad_media": 0.8025,
+      "media_min": 0.8,
+      "media_max": 0.805
+    },
+    {
+      "desde": 0.9,
+      "hasta": 1.0,
+      "n": 0,
+      "positivos": 0,
+      "tasa_observada": null,
+      "probabilidad_media": null,
+      "media_min": null,
+      "media_max": null
+    }
+  ]
+}

@@ -33,4 +33,4 @@ La entrega documental completa se congela con `entrega-final` y `entrega-final-v
 
 El ensayo de ingesta completa construyó el warehouse mediante Kafka y dbt. La captura de inferencia puede reutilizarlo cuando la comprobación de huellas confirma que corresponde a esos mismos nueve archivos. La consola informa esa reutilización y debe explicarse en la voz del video.
 
-La ficha del commit anterior conserva una nota de invariancia pendiente. Las verificaciones adicionales de esta preparación quedan registradas aquí. También existe una diferencia documental entre su frase sobre calibración pendiente y el mensaje del commit `ee29390`; el video debe evitar convertir esa frase antigua en una conclusión actual sin su evidencia específica.
+La [ficha actualizada](../../docs/FICHA_MODELO.md) incorpora estas comprobaciones. El [diagnóstico de calibración de A](../CALIBRACION_OOF_A.md) describe la evidencia disponible y sus límites.

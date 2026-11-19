@@ -37,9 +37,11 @@ Se usaron las predicciones de validación cruzada del corte A (cada unidad la pr
 - Contactar a todos en A daría −Q218,810: sin modelo la campaña pierde dinero.
 - El umbral quedó guardado en `evidencia/p2_2_2_umbral.json` antes de leer el corte B.
 
+La [curva de calibración](../evidencia/CALIBRACION_OOF_A.md) usa las predicciones OOF de A como diagnóstico posterior. El umbral de 0.32 corresponde a la corrida original.
+
 ## Test B (una sola evaluación)
 
-Con el umbral congelado, se entrenó el modelo final con todo el corte A y se evaluó en el corte B (76,096 unidades, 10,249 positivos, tasa 0.1347) una sola vez. Detalle en `evidencia/p2_2_2_test_b.json`; el script se niega a repetir la evaluación.
+Con el umbral congelado, se entrenó el modelo final con todo el corte A y se evaluó en el corte B (76,096 unidades, 10,249 positivos, tasa 0.1347) una sola vez. El [JSON de evidencia](../evidencia/p2_2_2_test_b.json) conserva el resultado original. Para un test futuro, primero se versionan el código y el umbral de A en un commit limpio. El comando valida ese estado antes de leer datos y bloquea la repetición si ya existe el JSON de evaluación.
 
 - Fecha: 2026-11-06 17:47.
 - Commit: la corrida partía del commit base `c211dd2` (rama `fase-2`), con `modelos/umbral.py` todavía sin versionar. El código y esta evidencia se subieron en el commit `091f1ed` (ver `docs/BITACORA_P2.md`).

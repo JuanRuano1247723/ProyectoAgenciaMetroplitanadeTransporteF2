@@ -52,7 +52,9 @@ Las acciones por segmento son propuestas del ejercicio. El responsable de la imp
 | Contra validación | PR-AUC 0.4370 en las predicciones OOF concatenadas de A y ganancia Q17,610. La tabla 2.1 reporta la media de PR-AUC por fold, 0.4377 ± 0.0072. B queda por debajo de ambas referencias; explicación en `docs/PROYECTO2_2_2.md` |
 | Después de ver B | No se cambió ni el modelo, ni el umbral, ni la configuración |
 
-Nota técnica: el campo `arbol_con_cambios_sin_commit` del JSON dice `false` porque en esa corrida el chequeo ignoraba archivos nuevos sin versionar (lo corregí después en el código; no afecta ningún resultado). En realidad `modelos/umbral.py` estaba sin versionar.
+El registro de la corrida reporta un árbol limpio porque la comprobación de entonces ignoraba los archivos sin seguimiento. El test del 6 de noviembre partió de `c211dd2` a las 17:47 y el archivo `modelos/umbral.py` se versionó en `091f1ed` a las 19:32. El commit posterior documenta la corrida original.
+
+Para futuras evaluaciones, primero se fija el umbral con A y se registra en un commit el código junto al JSON del umbral. `evaluar-b` verifica el commit y exige un árbol limpio, incluidos archivos sin seguimiento, antes de entrenar o leer B. La protección contra repetir el test conserva el JSON original.
 
 ## Congelación para la defensa
 

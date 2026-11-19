@@ -63,7 +63,9 @@ cp .env.example .env                             # y rellena PSEUDONIMO_SECRETO 
 python predecir.py --datos datos_red --fecha-corte 2026-08-30
 ```
 
-Ficha del modelo: [`docs/FICHA_MODELO.md`](docs/FICHA_MODELO.md). Prueba de invariancia (simulada): [`evidencia/p2_2_4_prueba_invariancia.md`](evidencia/p2_2_4_prueba_invariancia.md).
+Consulta la [ficha del modelo](docs/FICHA_MODELO.md), la [invariancia original](evidencia/p2_2_4_prueba_invariancia.md) y la [comprobación con 90 y 120 días](evidencia/defensa_2026_11_17/README.md#comprobaciones-de-predicciones).
+
+El [diagnóstico de calibración del corte A](evidencia/CALIBRACION_OOF_A.md) incluye la curva y el ECE estimado con el barrido OOF archivado. La [bitácora del test B](docs/BITACORA_P2.md#test-único-en-el-corte-b-22) registra el orden real de la corrida y el control de commit previo para futuras evaluaciones.
 
 ---
 
@@ -75,7 +77,14 @@ python -m venv prof1cieciadedatos            # crear el entorno virtual
 pip install -r requirements.txt
 ```
 
-El notebook de exploración de los archivos fuente se abre con el entorno activado: [COMPLETAR: nombre del notebook y cómo se abre].
+Con el entorno activado, instala las dependencias del notebook y abre [exploracion_origen.ipynb](exploracion_origen.ipynb) desde la raíz del repositorio.
+
+```bash
+python -m pip install jupyterlab missingno
+jupyter lab exploracion_origen.ipynb
+```
+
+En la primera celda de configuración, apunta `DATA_DIR` a la carpeta que contiene los nueve archivos fuente, por ejemplo `Path("datos_red")`. Ejecuta las celdas en orden.
 
 ---
 

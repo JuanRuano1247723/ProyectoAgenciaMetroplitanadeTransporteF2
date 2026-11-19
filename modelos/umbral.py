@@ -62,10 +62,13 @@ def confusion(y, contactar) -> dict:
 
 
 def _git() -> dict:
-    def run(*a):
-        return subprocess.run(["git", *a], cwd=str(RAIZ), capture_output=True, text=True).stdout.strip()
+    def run(*args: str) -> str:
+        return subprocess.run(
+            ["git", *args], cwd=RAIZ, capture_output=True, text=True, check=True
+        ).stdout.strip()
+
     return {"commit_base": run("rev-parse", "HEAD"), "rama": run("branch", "--show-current"),
-            "arbol_con_cambios_sin_commit": bool(run("status", "--porcelain"))}
+            "arbol_con_cambios_sin_commit": bool(run("status", "--porcelain", "--untracked-files=all"))}
 
 
 def predicciones_cv(X, y) -> np.ndarray:
@@ -159,13 +162,19 @@ def cmd_evaluar_b() -> int:
         raise SystemExit(f"{TEST_B_JSON.name} ya existe: el corte B se evalúa UNA sola vez. No se repite ni se ajusta nada después de verlo.")
     if not UMBRAL_JSON.exists():
         raise SystemExit("Primero `python -m modelos.umbral elegir`: el umbral se fija con el corte A antes de abrir B.")
+    try:
+        git = _git()
+    except (OSError, subprocess.CalledProcessError) as exc:
+        raise SystemExit("No se pudo verificar el commit de evaluación. El corte B sigue cerrado.") from exc
+    if git["arbol_con_cambios_sin_commit"]:
+        raise SystemExit("Registra el código y el umbral de A en un commit limpio antes de abrir el corte B.")
     warnings.filterwarnings("ignore")
     u = json.loads(UMBRAL_JSON.read_text(encoding="utf-8"))
     X, y = cargar_corte("A")
     modelo = ENSEMBLES[MODELO_FINAL]().fit(X, y)                  # modelo final: TODO el corte A
     Xb, yb = cargar_corte("B")                                    # única lectura de B en el proyecto
     r = evaluar(modelo, Xb, yb, u["umbral"])
-    r.update({"modelo_nombre": MODELO_FINAL, "fecha": datetime.now().isoformat(timespec="seconds"), **_git(),
+    r.update({"modelo_nombre": MODELO_FINAL, "fecha": datetime.now().isoformat(timespec="seconds"), **git,
               "validacion_cv_a": u["validacion_cv_en_umbral"], "pr_auc_cv_a": u["pr_auc_cv"], "n_A": int(len(y))})
     TEST_B_JSON.write_text(json.dumps(r, indent=2, ensure_ascii=False), encoding="utf-8")
     print(json.dumps(r, indent=2, ensure_ascii=False))
